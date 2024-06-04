@@ -50,7 +50,7 @@ class FrontController extends CI_Controller {
                     'wrong' => NULL
                 ];
             }else{
-                if (empty($this->session->userdata('final_score'))) {
+                if (!$this->session->userdata('final_score')) {
                     $this->session->set_userdata('final_score', 0);
                 }
                 $value = [
@@ -92,7 +92,7 @@ class FrontController extends CI_Controller {
     }
 
     function score(){
-        if ($this->session->userdata('final_score') != 0 || !$this->session->userdata('username')) {
+        if (!$this->session->userdata('final_score') && !$this->session->userdata('username')) {
             redirect('/logout');
         }else{
             $this->Ranking_M->insert_ranking($this->session->userdata('username'), $this->session->userdata('final_score'));

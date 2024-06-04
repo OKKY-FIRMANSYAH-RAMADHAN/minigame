@@ -74,6 +74,7 @@
                     xhr.setRequestHeader("Content-Type", "application/json");
                     xhr.onreadystatechange = function() {
                         if (xhr.readyState == 4 && xhr.status == 200) {
+                            console.log(xhr.responseText)
                             var response = JSON.parse(xhr.responseText);
                             var correct = response.correct;
                             var wrong = response.wrong;
